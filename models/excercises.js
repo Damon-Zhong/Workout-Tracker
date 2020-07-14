@@ -5,14 +5,15 @@ const ExcerciseSchema = new Schema({
 //   title: String,
 //   body: String
     day: Date,
-    exercises: [
+    exercise: [
       {
-        type: "resistance",
-        name: "Lateral Pull",
-        duration: 20,
-        weight: 300,
-        reps: 10,
-        sets: 4
+        type: String,
+        name: String,
+        duration: Number,
+        distance: Number,
+        weight: Number,
+        reps: Number,
+        sets: Number
       }
     ]
 });
