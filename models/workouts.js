@@ -2,16 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const WorkoutSchema = new Schema({
-//   title: String,
-//   body: String
     day: Date,
     totalDuration: {
       type: Number,
       default: 0
-      // body: () => {
-      //   totalDuration = this.exercises.forEach( excercise => { totalDuration += excercise.duration }) 
-      //   return totalDuration
-      // }
     },
     exercises: [
       {

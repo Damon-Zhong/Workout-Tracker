@@ -1,15 +1,14 @@
 const express = require("express");
-// const logger = require("morgan");
+const logger = require("morgan");
 const mongoose = require("mongoose");
 const db = require("./models");
 
 const PORT = process.env.PORT || 3000;
 
-// const User = require("./userModel.js");
 const app = express();
 
 //logging all the route calls
-// app.use(logger("dev"));
+app.use(logger("dev"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,13 +27,11 @@ app.get("/api/workouts", async ( req, res ) => {
 
 //[GET] excercise page
 app.get("/exercise", ( req, res ) => {
-    // res.sendfile("./public/")
     res.sendFile('public/exercise.html' , { root : __dirname})
 })
 
 // [GET] dashboard page
 app.get("/stats", ( req, res ) => {
-    // res.sendfile("./public/stats.html")
     res.sendFile('public/stats.html' , { root : __dirname})
 })
 
@@ -45,7 +42,6 @@ app.put("/api/workouts/:id", async ( req, res ) => {
         { $push: { exercises: req.body }, $inc: {totalDuration: req.body.duration} }
     )
     const cur_workout = await db.Workout.find( { _id: req.params.id } )
-    // console.log( `current workout plan: ${cur_workout[0]}` )
     res.send({})
 })
 
