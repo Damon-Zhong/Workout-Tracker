@@ -1,17 +1,31 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const WrokoutSchema = new Schema({
+const WorkoutSchema = new Schema({
+//   title: String,
+//   body: String
     day: Date,
-    totalDuration: { type: Number, default: 22 }, //sum the excercise duration
+    totalDuration: {
+      type: Number,
+      default: 0
+      // body: () => {
+      //   totalDuration = this.exercises.forEach( excercise => { totalDuration += excercise.duration }) 
+      //   return totalDuration
+      // }
+    },
     exercises: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "Excercise"
+        type: { type: String },
+        name: String,
+        duration: Number,
+        distance: Number,
+        weight: Number,
+        reps: Number,
+        sets: Number
       }
     ]
-  });
+});
 
-const Workout = mongoose.model("Workout", WrokoutSchema);
+const Workout = mongoose.model("Workout", WorkoutSchema);
 
 module.exports = Workout;

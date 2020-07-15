@@ -5,9 +5,10 @@ const ExcerciseSchema = new Schema({
 //   title: String,
 //   body: String
     day: Date,
+    totalDuration: Number,
     exercise: [
       {
-        type: String,
+        type: { type: String },
         name: String,
         duration: Number,
         distance: Number,
